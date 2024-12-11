@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConnectionStatusCell should render correctly 1`] = `
+<span
+  class="MuiTypography-root MuiTypography-body1 css-wl91uy-MuiTypography-root"
+>
+  online
+</span>
+`;
