@@ -37,7 +37,13 @@ export class DoorMapper implements EntityMapper<Door, DoorDto> {
   }
 
   private getApartmentsName(apartmentsDto: ApartmentDtoById, id?: string) {
-    return id ? apartmentsDto[id].name : 'n/a';
+    if (!id) {
+      return 'n/a';
+    }
+
+    const apartment = apartmentsDto[id];
+
+    return apartment ? apartment.name : 'n/a';
   }
 
   private getBuildingName(buildingDtos: BuildingDtosById, id: string) {

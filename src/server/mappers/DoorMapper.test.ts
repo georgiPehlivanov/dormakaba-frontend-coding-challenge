@@ -2,6 +2,7 @@ import { BuildingDto } from '@/__mocks__/dtos/BuidlingDto';
 import { DoorDto } from '@/__mocks__/dtos/DoorDto';
 import { Door } from '@/models/Door';
 import { DoorMapper } from './DoorMapper';
+import { ApartmentDto } from '@/__mocks__/dtos/ApartmentDto';
 
 const buildingDto: BuildingDto = {
   id: '63f4e0797e85310fee059022',
@@ -18,9 +19,10 @@ const doorDto: DoorDto = {
   connection_status: 'online',
   last_connection_status_update: '2023-02-22T02:38:40.374Z',
   building_id: buildingDto.id,
+  apartment_id: '63f4e2825abc011556da74af',
 };
 
-const apartmentDto = {
+const apartmentDto: ApartmentDto = {
   id: '63f4e2825abc011556da74af',
   name: 'Apartment 1.1',
   floor: 1,
@@ -40,7 +42,7 @@ describe('DoorMapper', () => {
       {
         [buildingDto.id]: buildingDto,
       },
-      {},
+      { [apartmentDto.id]: apartmentDto },
     );
 
     expect(door).toMatchObject<Door>({
