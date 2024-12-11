@@ -3,6 +3,7 @@ import { Door } from '@/models/Door';
 import { DetailPageContainer } from '@/ui/layout/DetailPageContainer';
 import { DetailPageItem } from '@/ui/layout/DetailPageItem';
 import { ConnectionStatusCell } from './ConnectionStatusCell';
+import { LastConnectionStatusUpdateField } from './LastConnectionStatusUpdateField';
 
 interface DoorDetailProps {
   door: Door;
@@ -25,6 +26,11 @@ export function DoorDetail({ door }: DoorDetailProps) {
       </DetailPageItem>
       <DetailPageItem label="Connection status">
         <ConnectionStatusCell connectionStatus={door.connectionStatus} />
+      </DetailPageItem>
+      <DetailPageItem label="Last connection status update">
+        <LastConnectionStatusUpdateField
+          timestamp={door.lastConnectionStatusUpdate}
+        />
       </DetailPageItem>
     </DetailPageContainer>
   );
