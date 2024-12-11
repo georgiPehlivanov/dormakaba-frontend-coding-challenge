@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { LastConnectionStatusUpdateField } from './LastConnectionStatusUpdateField';
 
-const timestamp: string = '2023-02-22T21:05:12.721Z';
+const timestamp = '2023-02-22T21:05:12.721Z';
 
 describe('DoorList', () => {
   it('should render correctly', () => {
