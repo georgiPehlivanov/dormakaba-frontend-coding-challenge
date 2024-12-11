@@ -10,6 +10,8 @@ export type ApartmentDtoById = Record<string, ApartmentDto>;
 
 @injectable()
 export class DoorMapper implements EntityMapper<Door, DoorDto> {
+  private static readonly NON_APPLICABLE = 'n/a';
+
   public toDomain(
     doorDto: DoorDto,
     buildingDtosById: BuildingDtosById,
@@ -20,7 +22,7 @@ export class DoorMapper implements EntityMapper<Door, DoorDto> {
       doorDto.building_id,
     );
 
-    const apartmentName = this.getApartmentsName(
+    const apartmentName = this.getApartmentName(
       apartmentsDtoById,
       doorDto.apartment_id,
     );
@@ -36,19 +38,21 @@ export class DoorMapper implements EntityMapper<Door, DoorDto> {
     };
   }
 
-  private getApartmentsName(apartmentsDto: ApartmentDtoById, id?: string) {
+  private getApartmentName(apartmentsDto: ApartmentDtoById, id?: string) {
     if (!id) {
-      return 'n/a';
+      return DoorMapper.NON_APPLICABLE;
     }
 
     const apartment = apartmentsDto[id];
 
-    return apartment ? apartment.name : 'n/a';
+    return apartment ? apartment.name : DoorMapper.NON_APPLICABLE;
   }
 
   private getBuildingName(buildingDtos: BuildingDtosById, id: string) {
     const building = buildingDtos[id];
 
-    return building ? `${building.street} ${building.street_no}` : 'n/a';
+    return building
+      ? `${building.street} ${building.street_no}`
+      : DoorMapper.NON_APPLICABLE;
   }
 }
