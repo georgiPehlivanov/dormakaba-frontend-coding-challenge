@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { Door } from '@/models/Door';
 import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { ConnectionStatusCell } from './ConnectionStatusCell';
+import { LastConnectionStatusUpdateField } from './LastConnectionStatusUpdateField';
 
 interface DoorListProps {
   doors: Door[];
@@ -35,6 +36,18 @@ const columns: GridColDef<Door>[] = [
     flex: 1,
     renderCell: ({ row: door }) => {
       return <ConnectionStatusCell connectionStatus={door.connectionStatus} />;
+    },
+  },
+  {
+    field: 'lastConnectionStatusUpdate',
+    headerName: 'Last connection status update',
+    flex: 1,
+    renderCell: ({ row: door }) => {
+      return (
+        <LastConnectionStatusUpdateField
+          timestamp={door.lastConnectionStatusUpdate}
+        />
+      );
     },
   },
 ];
