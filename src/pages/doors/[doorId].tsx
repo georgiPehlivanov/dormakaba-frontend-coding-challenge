@@ -17,7 +17,7 @@ export default function DoorDetailPage() {
   return (
     <>
       <Head>
-        <title>Door detail: {door?.name}</title>
+        <title>{`Door detail: ${door?.name}`}</title>
         <meta name="description" content={`door ${door?.name} detail`} />
       </Head>
       <Layout title={door?.name}>
