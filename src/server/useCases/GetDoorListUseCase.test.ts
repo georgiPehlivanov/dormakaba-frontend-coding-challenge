@@ -21,10 +21,15 @@ describe('GetDoorListUseCase', () => {
       .spyOn(BuildingRepository.prototype, 'getAllBuildings')
       .mockImplementation(() => Promise.resolve([]));
 
+    const getAllApartmentsSpy = jest
+      .spyOn(BuildingRepository.prototype, 'getAllBuildings')
+      .mockImplementation(() => Promise.resolve([]));
+
     await getDoorListUseCase.execute();
 
     expect(getAllDoorsSpy).toHaveBeenCalledTimes(1);
     expect(getAllBuildingsSpy).toHaveBeenCalledTimes(1);
+    expect(getAllApartmentsSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should throw if getAllBuildings request fails', async () => {

@@ -93,4 +93,18 @@ describe('DoorMapper', () => {
       lastConnectionStatusUpdate: doorDto.last_connection_status_update,
     });
   });
+
+  it('should set apartment name and building name to "n/a" if no matching apartments and buildings are found', () => {
+    const door = doorMapper.toDomain(doorDto, {}, {});
+
+    expect(door).toMatchObject<Door>({
+      id: doorDto.id,
+      name: doorDto.name,
+      apartmentName: 'n/a',
+      buildingName: 'n/a',
+      connectionType: doorDto.connection_type,
+      connectionStatus: doorDto.connection_status,
+      lastConnectionStatusUpdate: doorDto.last_connection_status_update,
+    });
+  });
 });
